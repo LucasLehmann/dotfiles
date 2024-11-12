@@ -99,7 +99,8 @@ export MANROFFOPT="-c"
 export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
 
 #shopt -s autocd # Automatically cd into dir without typing cd
-complete -cf doas # Doas tab completion
+complete -cf doas # tab completion
+complete -cf tldr
 
 eval "$(starship init bash)"
 eval "$(zoxide init bash)" && alias cd='z'
