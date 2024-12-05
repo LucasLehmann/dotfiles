@@ -95,7 +95,8 @@ fi
 
 ######
 
-export MANPAGER='nvim +Man!'
+export MANROFFOPT="-c"
+export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
 
 #shopt -s autocd # Automatically cd into dir without typing cd
 complete -cf doas # tab completion
