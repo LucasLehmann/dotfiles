@@ -4,8 +4,8 @@
 
 # If not running interactively, don't do anything
 case $- in
-    *i*) ;;
-      *) return;;
+  *i*) ;;
+  *) return;;
 esac
 
 HISTCONTROL=ignoreboth:reasedups
@@ -17,7 +17,7 @@ shopt -s histappend
 shopt -s histreedit
 shopt -s histverify
 
-PROMPT_COMMAND+="history -a; history -r"
+# PROMPT_COMMAND+="history -a; history -r"
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -31,52 +31,52 @@ shopt -s checkwinsize
 #[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
+  debian_chroot=$(cat /etc/debian_chroot)
 fi
 
 case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
+  xterm-color|*-256color) color_prompt=yes;;
 esac
 
 #force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+  if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
 	# We have color support; assume it's compliant with Ecma-48
 	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
 	# a case would tend to support setf rather than setaf.)
 	color_prompt=yes
-    else
+  else
 	color_prompt=
-    fi
+  fi
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+  PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
+  PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+  ;;
 *)
-    ;;
+  ;;
 esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
+  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+  alias ls='ls --color=auto'
+  alias dir='dir --color=auto'
+  alias vdir='vdir --color=auto'
 
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
 fi
 
 # colored GCC warnings and errors
@@ -95,17 +95,26 @@ fi
 
 ######
 
-export MANROFFOPT="-c"
-export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
+if [ -f /usr/share/wikiman/widgets/widget.bash ]; then
+  . /usr/share/wikiman/widgets/widget.bash
+fi
 
 #shopt -s autocd # Automatically cd into dir without typing cd
 complete -cf doas # tab completion
 complete -cf tldr
 
-eval "$(starship init bash)"
-eval "$(zoxide init bash)" && alias cd='z'
-#eval "$(atuin init bash)"
-[ -z $TMUX ] && (tmux -u a || tmux -u)
+if command -v starship > /dev/null 2>&1; then
+  eval "$(starship init bash)"
+fi
+if command -v zoxide > /dev/null 2>&1; then
+  eval "$(zoxide init bash)" && alias cd='z'
+fi
+# if command -v atuin > /dev/null 2>&1; then
+#   eval "$(atuin init bash)"
+# fi
+if [ "$(tty)" != "/dev/tty1" ]; then
+  [ -z $TMUX ] && (tmux -u a || tmux -u)
+fi
 
 alias \
 poweroff='doas /sbin/poweroff' \
@@ -130,39 +139,45 @@ lsz='eza --total-size' \
 tree='eza --tree' \
 mkdir='mkdir -pv' \
 bat='batcat' \
-cat='bat'
+cat='bat' \
+fzf="fzf --preview 'batcat --style=numbers --color=always --line-range :500 {}'"
+
+lfcd () {
+  cd "$(command lf -print-last-dir "$@")"
+}
 
 alias dos2unix="sed -i.bak 's/\r$//'"
 alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'
 alias xbindkeys='xbindkeys -f "$XDG_CONFIG_HOME"/xbindkeys/config'
 alias nvidia-settings='nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings'
+alias dosbox="dosbox -conf "$XDG_SESSION_HOME"/dosbox/dosbox.conf"
 
 HISTIGNORE+=$'[ \t]*:&:[fb]g:exit:ls:la:lt:ld:clear'
 
 extract () {
   for n in "$@"
   do
-     if [ -f $n ] ; then
-         case $n in
-             *.cbt|*.tar.bz2|*.tar.gz|*.tar.xz|*.tbz2|*.tgz|*.txz|*.tar)
-                          tar xvf ./$n     ;;
-             *.lzma)      unlzma ./$n      ;;
-             *.bz2)       bunzip2 ./$n     ;;
-             *.cbr|*.rar) unrar x ./$n     ;;
-             *.gz)        gunzip ./$n      ;;
-             *.cbz|*.epub|*.zip)       unzip ./$n       ;;
-             *.Z)         uncompress ./$n  ;;
-             *.7z|*.arj|*.cab|*.cb7|*.chm|*.deb|*.dmg|*.iso|*.lzh|*.msi|*.pkg|*.rpm|*.udf|*.wim|*.xrar)
-                          7z x ./$n        ;;
-             *.tar.zst)   unzstd ./$n      ;;
-             *.xz)        unxz ./$n        ;;
-             *.exe)       cabextract ./$n  ;;
-             *.cpio)      cpio -id < ./$n  ;;
-             *.cba|*.ace) unace x ./$n     ;;
-             *)           echo "'$1' cannot be extracted via extract()" ;;
-         esac
-     else
-         echo "'$1' is not a valid file"
-     fi
+    if [ -f $n ] ; then
+      case $n in
+        *.cbt|*.tar.bz2|*.tar.gz|*.tar.xz|*.tbz2|*.tgz|*.txz|*.tar)
+                     tar xvf ./$n     ;;
+        *.lzma)      unlzma ./$n      ;;
+        *.bz2)       bunzip2 ./$n     ;;
+        *.cbr|*.rar) unrar x ./$n     ;;
+        *.gz)        gunzip ./$n      ;;
+        *.cbz|*.epub|*.zip)       unzip ./$n       ;;
+        *.Z)         uncompress ./$n  ;;
+        *.7z|*.arj|*.cab|*.cb7|*.chm|*.deb|*.dmg|*.iso|*.lzh|*.msi|*.pkg|*.rpm|*.udf|*.wim|*.xrar)
+                     7z x ./$n        ;;
+        *.tar.zst)   unzstd ./$n      ;;
+        *.xz)        unxz ./$n        ;;
+        *.exe)       cabextract ./$n  ;;
+        *.cpio)      cpio -id < ./$n  ;;
+        *.cba|*.ace) unace x ./$n     ;;
+        *)           echo "'$1' cannot be extracted via extract()" ;;
+      esac
+    else
+      echo "'$1' is not a valid file"
+    fi
   done
 }
