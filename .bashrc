@@ -18,6 +18,7 @@ shopt -s histreedit
 shopt -s histverify
 
 # PROMPT_COMMAND+="history -a; history -r"
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -103,10 +104,10 @@ fi
 complete -cf doas # tab completion
 complete -cf tldr
 
-if command -v starship > /dev/null 2>&1; then
+if command -v starship >/dev/null 2>&1; then
   eval "$(starship init bash)"
 fi
-if command -v zoxide > /dev/null 2>&1; then
+if command -v zoxide >/dev/null 2>&1; then
   eval "$(zoxide init bash)" && alias cd='z'
 fi
 # if command -v atuin > /dev/null 2>&1; then
@@ -123,7 +124,6 @@ neofetch='neowofetch' \
 doas='doas --' \
 cp='cp -iv' \
 rm='rm -Iv' \
-grep='rg' \
 df='df -h' \
 du='du -h' \
 du='dust' \
