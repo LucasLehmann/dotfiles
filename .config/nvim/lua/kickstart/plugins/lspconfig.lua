@@ -139,7 +139,7 @@ return {
           cmd = { 'clangd', '--offset-encoding=utf-16' },
         },
         gopls = {},
-        pyright = {},
+        basedpyright = {},
         rust_analyzer = {},
         zls = {},
         ols = {},
