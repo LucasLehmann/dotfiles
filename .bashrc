@@ -110,9 +110,9 @@ fi
 if command -v zoxide >/dev/null 2>&1; then
   eval "$(zoxide init bash)" && alias cd='z'
 fi
-# if command -v atuin > /dev/null 2>&1; then
-#   eval "$(atuin init bash)"
-# fi
+if command -v atuin > /dev/null 2>&1; then
+  eval "$(atuin init bash)"
+fi
 if [ "$(tty)" != "/dev/tty1" ]; then
   [ -z $TMUX ] && (tmux -u a || tmux -u)
 fi
@@ -126,21 +126,31 @@ cp='cp -iv' \
 rm='rm -Iv' \
 df='df -h' \
 du='du -h' \
-du='dust' \
-eza='eza -l -hM --smart-group --group-directories-first --no-quotes --icons' \
-ezaa='eza -l -hM --git --git-repos --total-size --smart-group --group-directories-first --no-quotes --icons' \
-l='\eza' \
-ls='eza' \
-la='eza -a' \
-lt='eza -T' \
-ld='eza -TD' \
-lg='eza --git --git-repos' \
-lsz='eza --total-size' \
-tree='eza --tree' \
 mkdir='mkdir -pv' \
-bat='batcat' \
-cat='bat' \
 fzf="fzf --preview 'batcat --style=numbers --color=always --line-range :500 {}'"
+
+if command -v dust >/dev/null 2>&1; then
+  alias du='dust'
+fi
+if command -v batcat >/dev/null 2>&1; then
+  alias bat='batcat'
+fi
+if command -v bat >/dev/null 2>&1; then
+  alias cat='bat'
+fi
+if command -v eza >/dev/null 2>&1; then
+  alias \
+  eza='eza -l -hM --smart-group --group-directories-first --no-quotes --icons' \
+  ezaa='eza -l -hM --git --git-repos --total-size --smart-group --group-directories-first --no-quotes --icons' \
+  l='\eza' \
+  ls='eza' \
+  la='eza -a' \
+  lt='eza -T' \
+  ld='eza -TD' \
+  lg='eza --git --git-repos' \
+  lsz='eza --total-size' \
+  tree='eza --tree'
+fi
 
 lfcd () {
   cd "$(command lf -print-last-dir "$@")"
