@@ -7,7 +7,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_RUNTIME_DIR="/run/user/$UID"
 
 export HISTFILE="${XDG_STATE_HOME}"/bash/history
-export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
+#export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 export ERRFILE="$XDG_CACHE_HOME/X11/xsession-errors"
 export XCURSOR_PATH=/usr/share/icons:$XDG_DATA_HOME/icons
 export PYTHONSTARTUP="/etc/python/pythonrc"
