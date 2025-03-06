@@ -103,6 +103,7 @@ fi
 #shopt -s autocd # Automatically cd into dir without typing cd
 complete -cf doas # tab completion
 complete -cf tldr
+bind -s 'set completion-ignore-case on'
 
 if command -v starship >/dev/null 2>&1; then
   eval "$(starship init bash)"
