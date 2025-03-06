@@ -56,11 +56,11 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
-awful.spawn.with_shell("feh --bg-max ~/Pictures/wallpaper")
+awful.spawn.with_shell("feh --no-fehbg --bg-max ~/Pictures/wallpaper")
 
 -- This is used later as the default terminal and editor to run.
-terminal = os.getenv("TERMINAL")
-browser = os.getenv("BROWSER")
+terminal = os.getenv("TERMINAL") or "alacritty"
+browser = os.getenv("BROWSER") or "librewolf"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -288,9 +288,9 @@ globalkeys = gears.table.join(
 	awful.key({ modkey }, "k", function()
 		awful.client.focus.byidx(-1)
 	end, { description = "focus previous by index", group = "client" }),
-	awful.key({ modkey, "Shift" }, "w", function()
-		mymainmenu:show()
-	end, { description = "show main menu", group = "awesome" }),
+	-- awful.key({ modkey, "Shift" }, "w", function()
+	-- 	mymainmenu:show()
+	-- end, { description = "show main menu", group = "awesome" }),
 
 	-- Layout manipulation
 	awful.key({ modkey, "Shift" }, "j", function()
@@ -317,6 +317,9 @@ globalkeys = gears.table.join(
 	awful.key({ modkey }, "Return", function()
 		awful.spawn(terminal)
 	end, { description = "open a terminal", group = "launcher" }),
+	awful.key({ modkey }, "w", function()
+		awful.spawn(browser)
+	end, { description = "open a browser", group = "launcher" }),
 	awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
 	awful.key({ modkey, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
 
@@ -473,9 +476,6 @@ clientbuttons = gears.table.join(
 
 -- Set keys
 root.keys(globalkeys)
-awful.key({ modkey }, "w", function()
-	awful.spawn(browser)
-end, { description = "open a browser", group = "launcher" })
 -- }}}
 
 -- {{{ Rules

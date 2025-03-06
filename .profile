@@ -20,6 +20,7 @@ export GOPATH="$XDG_DATA_HOME"/go
 export W3M_DIR="$XDG_DATA_HOME"/w3m
 export CRAWL_DIR="$XDG_DATA_HOME"/crawl
 export PARALELL_HOME="$XDG_DATA_HOME"/parallel
+export ICEAUTHORITY="$XDG_CACHE_HOME"/ICEauthority
 
 export LESSHISTFILE=-
 export MANROFFOPT="-c"
@@ -33,7 +34,7 @@ export VISUAL='nvim'
 export EDITOR='nvim -e'
 export TERM="screen-256color"
 export TERMINAL="alacritty"
-export BROWSER="firefox"
+export BROWSER="librewolf"
 
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
