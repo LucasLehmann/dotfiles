@@ -118,8 +118,6 @@ if [ "$(tty)" != "/dev/tty1" ]; then
 fi
 
 alias \
-poweroff='doas /sbin/poweroff' \
-reboot='doas /sbin/reboot' \
 neofetch='neowofetch' \
 doas='doas --' \
 cp='cp -iv' \
