@@ -140,7 +140,7 @@ fi
 if command -v eza >/dev/null 2>&1; then
   alias \
   eza='eza -l -hM --smart-group --group-directories-first --no-quotes --icons' \
-  ezaa='eza -l -hM --git --git-repos --total-size --smart-group --group-directories-first --no-quotes --icons' \
+  ezaa='eza -l -hM --git --git-repos --total-size --group --group-directories-first --no-quotes --icons' \
   l='\eza' \
   ls='eza' \
   la='eza -a' \
