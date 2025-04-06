@@ -100,6 +100,7 @@ if [ -f /usr/share/wikiman/widgets/widget.bash ]; then
   . /usr/share/wikiman/widgets/widget.bash
 fi
 
+set -o vi
 #shopt -s autocd # Automatically cd into dir without typing cd
 complete -cf doas # tab completion
 complete -cf tldr

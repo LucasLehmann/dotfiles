@@ -1,2 +1,3 @@
 ERRFILE="$XDG_CACHE_HOME/X11/xsession-errors"
+export XCURSOR_SIZE=32
 exec awesome
