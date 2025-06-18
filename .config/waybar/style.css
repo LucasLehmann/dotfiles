@@ -6,7 +6,6 @@
 }
 
 #waybar {
-  background: transparent;
   color: @text;
   margin: 5px 5px;
 }
