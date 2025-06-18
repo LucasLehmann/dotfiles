@@ -38,7 +38,7 @@ export BROWSER="librewolf"
 
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
-. "$CARGO_HOME/env"
+[ -f "$CARGO_HOME/env" ] && . "$CARGO_HOME/env"
 
 ######
 
@@ -73,5 +73,5 @@ fi
 ######
 
 if [ "$(tty)" == "/dev/tty1" ]; then
-    startx && xbindkeys_autostart
+    startplasma-wayland # startx && xbindkeys_autostart
 fi
