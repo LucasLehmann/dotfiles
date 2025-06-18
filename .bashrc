@@ -115,9 +115,9 @@ fi
 if command -v atuin > /dev/null 2>&1; then
   eval "$(atuin init bash)"
 fi
-if [ "$(tty)" != "/dev/tty1" ]; then
-  [ -z $TMUX ] && (tmux -u a || tmux -u)
-fi
+# if [ "$(tty)" != "/dev/tty1" ]; then
+#   [ -z $TMUX ] && (tmux -u a || tmux -u)
+# fi
 
 alias \
 neofetch='neowofetch' \

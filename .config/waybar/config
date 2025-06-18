@@ -1,4 +1,4 @@
-{ # Lovingly stolen from https://github.com/rubyowo/dotfiles/tree/f925cf8e3461420a21b6dc8b8ad1190107b0cc56/config/waybar
+{ // Lovingly stolen from https://github.com/rubyowo/dotfiles/tree/f925cf8e3461420a21b6dc8b8ad1190107b0cc56/config/waybar
     "layer": "top",
     "position": "top",
     "modules-right": ["tray", "pulseaudio", "backlight", "battery"],

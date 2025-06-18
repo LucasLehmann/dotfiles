@@ -72,6 +72,6 @@ fi
 
 ######
 
-if [ "$(tty)" == "/dev/tty1" ]; then
-    startplasma-wayland # startx && xbindkeys_autostart
-fi
+# if [ "$(tty)" == "/dev/tty1" ]; then
+#     startplasma-wayland # startx && xbindkeys_autostart
+# fi
