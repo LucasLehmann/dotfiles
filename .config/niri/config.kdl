@@ -257,6 +257,11 @@ layout {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "waybar"
 spawn-at-startup "mako"
+spawn-at-startup "xwayland-satellite"
+environment {
+    DISPLAY ":0"
+    QT_QPA_PLATFORMTHEME "qt5ct"
+}
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
@@ -514,9 +519,9 @@ binds {
     // Expel the bottom window from the focused column to the right.
     // Mod+Period { expel-window-from-column; }
 
-    Mod+Ctrl+Shift+R { switch-preset-column-width; }
-    Mod+Shift+R { switch-preset-window-height; }
-    Mod+Ctrl+R { reset-window-height; }
+    Mod+Z { switch-preset-column-width; }
+    Mod+Shift+Z { switch-preset-window-height; }
+    Mod+Ctrl+Z { reset-window-height; }
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
 
