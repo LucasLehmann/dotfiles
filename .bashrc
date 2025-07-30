@@ -135,6 +135,9 @@ export FZF_DEFAULT_OPTS=" \
 --color=selected-bg:#45475A \
 --color=border:#313244,label:#CDD6F4"
 
+if command -v nvim >/dev/null 2>&1; then
+  alias vim='nvim'
+fi
 if command -v dust >/dev/null 2>&1; then
   alias du='dust'
 fi
