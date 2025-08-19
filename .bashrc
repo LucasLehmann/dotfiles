@@ -127,7 +127,7 @@ rm='rm -Iv' \
 df='df -h' \
 du='du -h' \
 mkdir='mkdir -pv' \
-fzf="fzf --preview 'batcat --style=numbers --color=always --line-range :500 {}'"
+fzf="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8 \
 --color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
@@ -140,6 +140,9 @@ if command -v nvim >/dev/null 2>&1; then
 fi
 if command -v dust >/dev/null 2>&1; then
   alias du='dust'
+fi
+if command -v fdfind >/dev/null 2>&1; then
+  alias fd='fdfind'
 fi
 if command -v batcat >/dev/null 2>&1; then
   alias bat='batcat'
