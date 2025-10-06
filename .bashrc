@@ -100,11 +100,11 @@ if [ -f /usr/share/wikiman/widgets/widget.bash ]; then
   . /usr/share/wikiman/widgets/widget.bash
 fi
 
-set -o vi
+#set -o vi
 #shopt -s autocd # Automatically cd into dir without typing cd
 complete -cf doas # tab completion
 complete -cf tldr
-bind -s 'set completion-ignore-case on'
+set completion-ignore-case on
 
 if command -v starship >/dev/null 2>&1; then
   eval "$(starship init bash)"
@@ -162,6 +162,11 @@ if command -v eza >/dev/null 2>&1; then
   lg='eza --git --git-repos' \
   lsz='eza --total-size' \
   tree='eza --tree'
+else
+  alias \
+  ls='ls --color=auto -l --human-readable' \
+  l='\ls' \
+  la='ls -a'
 fi
 
 lfcd () {
