@@ -8,7 +8,7 @@ case $- in
   *) return;;
 esac
 
-HISTCONTROL=ignoreboth:reasedups
+HISTCONTROL=ignoreboth:erasedups
 
 HISTSIZE=1000
 HISTFILESIZE=2000
@@ -104,7 +104,7 @@ fi
 #shopt -s autocd # Automatically cd into dir without typing cd
 complete -cf doas # tab completion
 complete -cf tldr
-set completion-ignore-case on
+bind -s 'set completion-ignore-case on'
 
 if command -v starship >/dev/null 2>&1; then
   eval "$(starship init bash)"
@@ -178,8 +178,6 @@ alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'
 alias xbindkeys='xbindkeys -f "$XDG_CONFIG_HOME"/xbindkeys/config'
 alias nvidia-settings='nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings'
 alias dosbox="dosbox -conf "$XDG_SESSION_HOME"/dosbox/dosbox.conf"
-
-HISTIGNORE+=$'[ \t]*:&:[fb]g:exit:ls:la:lt:ld:clear'
 
 extract () {
   for n in "$@"
