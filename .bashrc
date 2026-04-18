@@ -96,15 +96,13 @@ fi
 
 ######
 
-if [ -f /usr/share/wikiman/widgets/widget.bash ]; then
-  . /usr/share/wikiman/widgets/widget.bash
-fi
-
-set -o vi
+#set -o vi
 #shopt -s autocd # Automatically cd into dir without typing cd
-complete -cf doas # tab completion
-complete -cf tldr
 bind -s 'set completion-ignore-case on'
+
+if [ -f /usr/share/wikiman/widgets/widget.bash ]; then
+  . /usr/share/wikiman/widgets/widget.bash # this can probably only be done after setting vi mode
+fi
 
 if command -v starship >/dev/null 2>&1; then
   eval "$(starship init bash)"
