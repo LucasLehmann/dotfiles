@@ -160,6 +160,11 @@ if command -v eza >/dev/null 2>&1; then
   lg='eza --git --git-repos' \
   lsz='eza --total-size' \
   tree='eza --tree'
+else
+  alias \
+  l='\ls' \
+  ls='ls -lh --group-directories-first' \
+  la='ls -A' \
 fi
 
 lfcd () {
