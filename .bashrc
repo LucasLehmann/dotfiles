@@ -164,7 +164,7 @@ else
   alias \
   l='\ls' \
   ls='ls -lh --group-directories-first' \
-  la='ls -A' \
+  la='ls -A'
 fi
 
 lfcd () {
