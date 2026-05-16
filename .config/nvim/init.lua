@@ -16,43 +16,34 @@ vim.opt.splitbelow = true
 vim.opt.list = true
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
-vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>') 
-
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-})
+vim.api.nvim_create_autocmd('TextYankPost', {callback = function() vim.hl.on_yank() end})
 
 vim.keymap.set('n', '<leader>r', ':make<CR>', { desc = 'Run :make' })
 
 local gh = function(x) return 'https://github.com/' .. x end
 local cb = function(x) return 'https://codeberg.org/' .. x end
-vim.pack.add{gh'catppuccin/nvim'};vim.cmd.colorscheme 'catppuccin-mocha'
-
-vim.pack.add{gh('mbbill/undotree')}
-vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle, { desc = 'Toggle Undotree' })
 
 vim.pack.add{
-  gh('tpope/vim-sleuth'),
-  gh('lewis6991/gitsigns.nvim'),
-  gh('folke/which-key.nvim'),
-  gh('ThePrimeagen/vim-be-good'),
+  gh'neovim/nvim-lspconfig',
+  gh'catppuccin/nvim',
+  gh'mbbill/undotree',
+  gh'tpope/vim-sleuth',
+  gh'lewis6991/gitsigns.nvim',
+  gh'folke/which-key.nvim',
+  gh'ThePrimeagen/vim-be-good',
+  gh'lukas-reineke/indent-blankline.nvim',
 }
-vim.pack.add{gh'lukas-reineke/indent-blankline.nvim'};require('ibl').setup()
-
-vim.pack.add{gh'neovim/nvim-lspconfig'}
+vim.cmd.colorscheme 'catppuccin-mocha'
+vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle, { desc = 'Toggle Undotree' })
+require('ibl').setup()
 vim.lsp.enable'clangd'
 -- debugger dap?
 -- formating conform?
 -- linting nvim-lint?
--- auto install lsps linters and formater, smason-lspconfig?
+-- auto install lsps linters and formaters, mason-lspconfig?
 
 -- make more shortcuts for telescope
---vim.pack.add{gh'nvim-lua/plenary.nvim', gh'nvim-telescope/telescope-ui-select.nvim',gh'nvim-telescope/telescope-fzf-native.nvim',gh'nvim-telescope/telescope.nvim'}
 vim.pack.add{gh'nvim-lua/plenary.nvim', gh'nvim-telescope/telescope-ui-select.nvim',gh'nvim-telescope/telescope-fzf-native.nvim',gh'nvim-telescope/telescope.nvim'}
 local builtin = require'telescope.builtin'
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
