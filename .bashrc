@@ -146,6 +146,7 @@ if command -v batcat >/dev/null 2>&1; then
   alias bat='batcat'
 fi
 if command -v bat >/dev/null 2>&1; then
+  alias batcat='bat'
   alias cat='bat'
 fi
 if command -v eza >/dev/null 2>&1; then
