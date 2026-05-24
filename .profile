@@ -10,15 +10,32 @@ export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
 export ERRFILE="$XDG_CACHE_HOME/X11/xsession-errors"
 export XCURSOR_PATH=/usr/share/icons:$XDG_DATA_HOME/icons
 export PYTHONSTARTUP="/etc/python/pythonrc"
+export PYTHONSTARTUP="$XDG_CONFIG_HOME"/python/pythonrc.py
+export PYTHON_HISTORY="$XDG_STATE_HOME"/python_history
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npmrc
+export NPM_CONFIG_INIT_MODULE="$XDG_CONFIG_HOME"/npm/config/npm-init.js
+export NPM_CONFIG_CACHE="$XDG_CACHE_HOME"/npm
+export NPM_CONFIG_TMP="$XDG_RUNTIME_DIR"/npm
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export GOPATH="$XDG_DATA_HOME"/go
 export W3M_DIR="$XDG_DATA_HOME"/w3m
 export CRAWL_DIR="$XDG_DATA_HOME"/crawl
 export PARALELL_HOME="$XDG_DATA_HOME"/parallel
 export ICEAUTHORITY="$XDG_CACHE_HOME"/ICEauthority
+export ANDROID_USER_HOME="$XDG_DATA_HOME"/android
+alias adb='HOME="$XDG_DATA_HOME"/android adb'
+export ANDROID_AVD_HOME=$XDG_DATA_HOME/android/avd
+export CRAWL_DIR="$XDG_DATA_HOME"/crawl/
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
+export DOTNET_CLI_HOME="$XDG_DATA_HOME"/dotnet
+export MINETEST_USER_PATH="$XDG_DATA_HOME"/minetest
+
+alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'
+alias xbindkeys='xbindkeys -f "$XDG_CONFIG_HOME"/xbindkeys/config'
+alias nvidia-settings='nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings'
+alias dosbox="dosbox -conf "$XDG_SESSION_HOME"/dosbox/dosbox.conf"
 
 export LESSHISTFILE=-
 export MANROFFOPT="-c"

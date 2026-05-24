@@ -172,10 +172,6 @@ lfcd () {
 }
 
 alias dos2unix="sed -i.bak 's/\r$//'"
-alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'
-alias xbindkeys='xbindkeys -f "$XDG_CONFIG_HOME"/xbindkeys/config'
-alias nvidia-settings='nvidia-settings --config="$XDG_CONFIG_HOME"/nvidia/settings'
-alias dosbox="dosbox -conf "$XDG_SESSION_HOME"/dosbox/dosbox.conf"
 
 HISTIGNORE+=$'[ \t]*:&:[fb]g:exit:ls:la:lt:ld:clear'
 
