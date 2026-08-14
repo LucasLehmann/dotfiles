@@ -151,8 +151,8 @@ if command -v bat >/dev/null 2>&1; then
 fi
 if command -v eza >/dev/null 2>&1; then
   alias \
-  eza='eza -l -hM --smart-group --group-directories-first --no-quotes --icons' \
-  ezaa='eza -l -hM --git --git-repos --total-size --group --group-directories-first --no-quotes --icons' \
+  eza='eza -l -hM --smart-group --group-directories-first --no-quotes' \
+  ezaa='eza -l -hM --git --git-repos --total-size --group --group-directories-first --no-quotes' \
   l='\eza' \
   ls='eza' \
   la='eza -a' \
