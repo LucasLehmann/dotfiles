@@ -88,5 +88,7 @@ fi
 ######
 
 if [ "$(tty)" == "/dev/tty1" ]; then
-    exec startplasma-wayland # startx && xbindkeys_autostart
+    if command -v startplasma-wayland >/dev/null 2>&1; then
+        exec startplasma-wayland # startx && xbindkeys_autostart
+    fi
 fi
