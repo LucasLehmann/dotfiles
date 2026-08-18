@@ -17,4 +17,4 @@ vim.pack.add{
 }
 vim.cmd.colorscheme 'catppuccin-mocha'
 vim.keymap.set('n', '<M-u>', vim.cmd.UndotreeToggle, { desc = 'Toggle Undotree' })
-vim.lsp.enable{'clangd', 'ols'}
+vim.lsp.enable{'clangd', 'ols', 'pyright'}
