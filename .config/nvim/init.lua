@@ -15,6 +15,7 @@ vim.pack.add{
   gh'lewis6991/gitsigns.nvim',
   gh'folke/which-key.nvim',
   gh'github/copilot.vim',
+  gh'chomosuke/typst-preview.nvim'
 }
 vim.g.copilot_enabled = false
 vim.cmd.colorscheme 'catppuccin-mocha'
