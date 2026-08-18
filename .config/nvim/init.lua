@@ -14,7 +14,9 @@ vim.pack.add{
   gh'tpope/vim-sleuth',
   gh'lewis6991/gitsigns.nvim',
   gh'folke/which-key.nvim',
+  gh'github/copilot.vim',
 }
+vim.g.copilot_enabled = false
 vim.cmd.colorscheme 'catppuccin-mocha'
 vim.keymap.set('n', '<M-u>', vim.cmd.UndotreeToggle, { desc = 'Toggle Undotree' })
 vim.lsp.enable{'clangd', 'ols', 'pyright'}
