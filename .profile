@@ -92,3 +92,5 @@ if [ "$(tty)" == "/dev/tty1" ]; then
         exec startplasma-wayland # startx && xbindkeys_autostart
     fi
 fi
+
+export QSYS_ROOTDIR="/home/eris/.cache/yay/quartus-free/pkg/quartus-free-quartus/opt/intelFPGA/25.1/quartus/sopc_builder/bin"
