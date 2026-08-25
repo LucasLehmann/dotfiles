@@ -18,7 +18,7 @@ vim.pack.add{
   gh'github/copilot.vim',
   gh'chomosuke/typst-preview.nvim'
 }
-require 'typst-preview'.setup{invert_colors='dark'}
+require 'typst-preview'.setup{invert_colors='auto'}
 vim.g.copilot_enabled = false
 vim.cmd.colorscheme 'catppuccin-mocha'
 vim.keymap.set('n', '<M-u>', vim.cmd.UndotreeToggle, { desc = 'Toggle Undotree' })
