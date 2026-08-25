@@ -4,6 +4,7 @@ vim.opt.undofile = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.list = true
+vim.opt.colorcolumn = '80,120,160'
 vim.api.nvim_create_autocmd('TextYankPost', {callback = function() vim.hl.on_yank() end})
 
 local gh = function(x) return 'https://github.com/' .. x end
@@ -17,7 +18,7 @@ vim.pack.add{
   gh'github/copilot.vim',
   gh'chomosuke/typst-preview.nvim'
 }
-require 'typst-preview'.setup{invert_colors='auto'}
+require 'typst-preview'.setup{invert_colors='dark'}
 vim.g.copilot_enabled = false
 vim.cmd.colorscheme 'catppuccin-mocha'
 vim.keymap.set('n', '<M-u>', vim.cmd.UndotreeToggle, { desc = 'Toggle Undotree' })
