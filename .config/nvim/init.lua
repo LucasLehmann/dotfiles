@@ -28,7 +28,18 @@ vim.cmd.colorscheme 'catppuccin-mocha'
 vim.lsp.enable{'clangd', 'ols', 'pyright', 'tinymist'}
 
 vim.keymap.set('n', '<M-u>', vim.cmd.UndotreeToggle, { desc = 'Toggle Undotree' })
-vim.keymap.set('n', '<leader>p', ':TypstPreview<CR>')
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "typst",
+  callback = function(args)
+    vim.keymap.set('n', '<leader>p', ':TypstPreview<CR>',  { buffer = args.buf })
+  end,
+})
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "c",
+  callback = function(args)
+    vim.keymap.set('n', '<leader>r', ':!gcc % && ./a.out<CR>', {desc = 'run c', buffer = args.buf })
+  end,
+})
 require'which-key'.add{
   { '<leader>h', group = "gitsigns hunk"},
   { '<leader>t', group = "gitsigns toggle"},
