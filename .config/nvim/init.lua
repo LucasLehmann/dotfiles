@@ -11,6 +11,7 @@ vim.opt.spelllang = { "nb", "en" }
 vim.opt.linebreak = true
 vim.g.mapleader = " "
 vim.api.nvim_create_autocmd('TextYankPost', {callback = function() vim.hl.on_yank() end})
+vim.keymap.set('n', '<esc>', ':nohlsearch<CR><esc>',  {desc = "Clear highlight fom search"})
 
 local gh = function(x) return 'https://github.com/' .. x end
 vim.pack.add{
