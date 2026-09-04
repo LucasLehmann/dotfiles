@@ -8,6 +8,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.colorcolumn = '80,120,160'
 vim.opt.spell = true
 vim.opt.spelllang = { "nb", "en" }
+vim.opt.linebreak = true
 vim.g.mapleader = " "
 vim.api.nvim_create_autocmd('TextYankPost', {callback = function() vim.hl.on_yank() end})
 

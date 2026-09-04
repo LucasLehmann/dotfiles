@@ -93,4 +93,4 @@ if [ "$(tty)" == "/dev/tty1" ]; then
     fi
 fi
 
-export QSYS_ROOTDIR="/home/eris/.cache/yay/quartus-free/pkg/quartus-free-quartus/opt/intelFPGA/25.1/quartus/sopc_builder/bin"
+export QSYS_ROOTDIR="/opt/intelFPGA/25.1/quartus/bin"
