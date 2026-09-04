@@ -6,8 +6,6 @@ vim.opt.smartcase = true
 vim.opt.list = true
 vim.opt.signcolumn = "yes"
 vim.opt.colorcolumn = '80,120,160'
-vim.opt.spell = true
-vim.opt.spelllang = { "nb", "en" }
 vim.opt.linebreak = true
 vim.g.mapleader = " "
 vim.api.nvim_create_autocmd('TextYankPost', {callback = function() vim.hl.on_yank() end})
@@ -35,6 +33,13 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function(args)
     vim.opt_local.columns = 80
     vim.keymap.set('n', '<leader>p', ':TypstPreview<CR>',  { buffer = args.buf })
+  end,
+})
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "txt", "md", "typst" },
+  callback = function(args)
+    vim.opt.spell = true
+    vim.opt.spelllang = { "nb", "en" }
   end,
 })
 vim.api.nvim_create_autocmd("FileType", {
