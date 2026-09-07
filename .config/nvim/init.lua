@@ -9,8 +9,7 @@ vim.opt.colorcolumn = '80,120,160'
 vim.opt.linebreak = true
 vim.g.mapleader = " "
 vim.api.nvim_create_autocmd('TextYankPost', {callback = function() vim.hl.on_yank() end})
-vim.keymap.set('n', '<esc>', ':nohlsearch<CR><esc>',  {desc = "Clear highlight fom search"})
-
+vim.keymap.set('n', '<esc>', '<cmd>nohlsearch<CR><esc>',  {desc = "Clear highlight fom search"})
 local gh = function(x) return 'https://github.com/' .. x end
 vim.pack.add{
   gh'neovim/nvim-lspconfig',
@@ -32,7 +31,7 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = "typst",
   callback = function(args)
     vim.opt_local.columns = 80
-    vim.keymap.set('n', '<leader>p', ':TypstPreview<CR>',  { buffer = args.buf })
+    vim.keymap.set('n', '<leader>p', '<cmd>TypstPreview<CR>',  { buffer = args.buf })
   end,
 })
 vim.api.nvim_create_autocmd("FileType", {
@@ -45,7 +44,7 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "c",
   callback = function(args)
-    vim.keymap.set('n', '<leader>r', ':!gcc % && ./a.out<CR>', {desc = 'run c', buffer = args.buf })
+    vim.keymap.set('n', '<leader>r', '<cmd>!gcc % && ./a.out<CR>', {desc = 'run c', buffer = args.buf })
   end,
 })
 require'which-key'.add{
