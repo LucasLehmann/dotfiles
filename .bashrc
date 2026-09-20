@@ -1,4 +1,4 @@
-if [ -n $(command -v tmux) -a "$(tty)" != "/dev/tty1" -a -z $TMUX ]; then
+if [ -n "$(command -v tmux)" -a "$(tty)" != "/dev/tty1" -a -z $TMUX ]; then
   if tmux list-sessions; then
     exec tmux -u a
   else
