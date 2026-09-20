@@ -10,6 +10,7 @@ vim.opt.linebreak = true
 vim.g.mapleader = " "
 vim.api.nvim_create_autocmd('TextYankPost', {callback = function() vim.hl.on_yank() end})
 vim.keymap.set('n', '<esc>', '<cmd>nohlsearch<CR><esc>',  {desc = "Clear highlight fom search"})
+vim.keymap.set('n', '<f5>', '<cmd>make<CR>', {desc = 'run :make'})
 local gh = function(x) return 'https://github.com/' .. x end
 vim.pack.add{
   gh'neovim/nvim-lspconfig',
@@ -24,7 +25,7 @@ vim.pack.add{
 require'typst-preview'.setup{invert_colors='always'}
 vim.g.copilot_enabled = false
 vim.cmd.colorscheme 'catppuccin-mocha'
-vim.lsp.enable{'clangd', 'ols', 'pyright', 'tinymist'}
+vim.lsp.enable{'clangd', 'ols', 'pyright', 'tinymist', 'rust-analyzer' }
 
 vim.keymap.set('n', '<M-u>', vim.cmd.UndotreeToggle, { desc = 'Toggle Undotree' })
 vim.api.nvim_create_autocmd("FileType", {
@@ -42,11 +43,18 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "c",
-  callback = function(args)
-    vim.keymap.set('n', '<leader>r', '<cmd>!gcc % && ./a.out<CR>', {desc = 'run c', buffer = args.buf })
+  pattern = {"c", "cpp"},
+  callback = function()
+    local has_makefile = vim.fn.glob("[mM][aA][kK][eE][fF][iI][lL][eE]") ~= ""
+    if not has_makefile then
+      -- Wanting to use this one instead but it wouldnt work on winodws
+      -- the other one makes it annoying to tab complete :)
+      -- vim.bo.makeprg = "gcc % && ./a.out"
+      vim.bo.makeprg = "gcc % -o %< && ./%<"
+    end
   end,
 })
+
 require'which-key'.add{
   { '<leader>h', group = "gitsigns hunk"},
   { '<leader>t', group = "gitsigns toggle"},
