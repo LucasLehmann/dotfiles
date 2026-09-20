@@ -1,3 +1,10 @@
+if [ "$(tty)" != "/dev/tty1" -a -z $TMUX ]; then
+  if tmux list-sessions; then
+    exec tmux -u a
+  else
+    exec tmux -u
+  fi
+fi
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -113,9 +120,6 @@ fi
 if command -v atuin > /dev/null 2>&1; then
   eval "$(atuin init bash)"
 fi
-# if [ "$(tty)" != "/dev/tty1" ]; then
-#   [ -z $TMUX ] && (tmux -u a || tmux -u)
-# fi
 
 alias \
 neofetch='neowofetch' \
