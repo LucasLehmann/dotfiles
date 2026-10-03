@@ -73,3 +73,4 @@ if [ "$(tty)" == "/dev/tty1" ]; then
 fi
 
 export QSYS_ROOTDIR="/opt/intelFPGA/25.1/quartus/bin"
+export PATH="/opt/intelFPGA/25.1/quartus/bin:$PATH"

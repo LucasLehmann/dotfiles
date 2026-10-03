@@ -31,7 +31,7 @@ vim.keymap.set('n', '<M-u>', vim.cmd.UndotreeToggle, { desc = 'Toggle Undotree' 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "typst",
   callback = function(args)
-    vim.opt_local.columns = 80
+    -- vim.opt_local.columns = 80
     vim.keymap.set('n', '<leader>p', '<cmd>TypstPreview<CR>',  { buffer = args.buf })
   end,
 })
